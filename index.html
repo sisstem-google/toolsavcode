@@ -2117,4 +2117,39 @@
     </script><!--Bottom of the page-->
   </div>
 </body>
+<script>
+// FIX: konflik jQuery ganda
+if (typeof jQuery === "undefined") {
+    document.write('<script src="https://code.jquery.com/jquery-3.6.0.min.js"><\/script>');
+}
+
+// FIX: tombol hamburger
+document.addEventListener("DOMContentLoaded", function () {
+    const hamb = document.querySelector(".hamb-menu");
+    const sidebar = document.querySelector(".sidebar");
+
+    if (hamb && sidebar) {
+        hamb.addEventListener("click", () => {
+            sidebar.classList.toggle("active");
+        });
+    }
+});
+
+// FIX: search icon muncul
+$(document).ready(function(){
+    $(".btn-search").on("click", function(){
+        $(".search").toggleClass("active");
+    });
+});
+
+// FIX: lazyload supaya thumbnail muncul
+document.querySelectorAll("img.lazyload").forEach(img => {
+    img.src = img.getAttribute("data-src");
+});
+
+// FIX: Views & Like tidak muncul (aktifkan icon)
+document.querySelectorAll(".stat span i").forEach(i=>{
+    i.style.display="inline-block";
+});
+</script>
 </html>
